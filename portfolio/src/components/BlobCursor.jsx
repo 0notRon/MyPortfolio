@@ -9,50 +9,60 @@ const trans = (x, y) => `translate3d(${x}px,${y}px,0) translate3d(-50%, -50%, 0)
 
 export const BlobCursor = () => {
   const [trail, api] = useTrail(3, () => ({
-    xy: [window.innerWidth / 2, window.innerHeight / 2],
-    opacity: 0, 
+    xy: [-100, -100], // start offscreen
+    opacity: 0,
     config: (i) => (i === 0 ? fast : slow),
   }));
 
   useEffect(() => {
+    let fadeTimeout;
+
+    const updatePosition = (x, y) => {
+      api.start({ xy: [x, y], opacity: 0.85 });
+      if (fadeTimeout) {
+        clearTimeout(fadeTimeout);
+      }
+    };
+
     const handleMouseMove = (e) => {
-      api.start({ xy: [e.clientX, e.clientY], opacity: 0.85 });
+      updatePosition(e.clientX, e.clientY);
+    };
+
+    const handleTouchStart = (e) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        updatePosition(touch.clientX, touch.clientY);
+      }
     };
 
     const handleTouchMove = (e) => {
       if (e.touches.length > 0) {
         const touch = e.touches[0];
-        api.start({ xy: [touch.clientX, touch.clientY], opacity: 0.85 });
+        updatePosition(touch.clientX, touch.clientY);
       }
     };
 
-    const handleTouchStart = () => {
-      api.start({ opacity: 0.85 }); // fade in blobs on touch start
-      if (fadeTimeout) clearTimeout(fadeTimeout);
-    };
-
-    let fadeTimeout;
     const handleTouchEnd = () => {
       fadeTimeout = setTimeout(() => {
-        api.start({ opacity: 0 }); // fade out blobs after 1 sec of no touch
+        api.start({ opacity: 0, xy: [-100, -100] }); // fade out and move offscreen
       }, 1000);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchmove', handleTouchMove);
     window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchmove', handleTouchMove);
     window.addEventListener('touchend', handleTouchEnd);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
       window.removeEventListener('touchend', handleTouchEnd);
       if (fadeTimeout) clearTimeout(fadeTimeout);
     };
   }, [api]);
 
-  const colors = [ 
+  const colors = [
     'radial-gradient(circle at center, #4E71FF, #5409DA)',
     'radial-gradient(circle at center, #00f260, #0575e6)',
     'radial-gradient(circle at center, #6FE6FC, #4ED7F1)',
