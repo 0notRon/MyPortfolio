@@ -106,6 +106,7 @@ export const BlobCursor = () => {
               zIndex: 9999 - index,
               boxShadow: '0 0 20px rgba(255,255,255,0.3)',
               mixBlendMode: 'screen',
+              
             }}
           />
         ))}
@@ -114,4 +115,4 @@ export const BlobCursor = () => {
   );
 };
 
-export default BlobCursor;
+export default BlobCursor;  
