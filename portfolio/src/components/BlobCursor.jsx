@@ -10,15 +10,46 @@ const trans = (x, y) => `translate3d(${x}px,${y}px,0) translate3d(-50%, -50%, 0)
 export const BlobCursor = () => {
   const [trail, api] = useTrail(3, () => ({
     xy: [window.innerWidth / 2, window.innerHeight / 2],
+    opacity: 0, 
     config: (i) => (i === 0 ? fast : slow),
   }));
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      api.start({ xy: [e.clientX, e.clientY] });
+      api.start({ xy: [e.clientX, e.clientY], opacity: 0.85 });
     };
+
+    const handleTouchMove = (e) => {
+      if (e.touches.length > 0) {
+        const touch = e.touches[0];
+        api.start({ xy: [touch.clientX, touch.clientY], opacity: 0.85 });
+      }
+    };
+
+    const handleTouchStart = () => {
+      api.start({ opacity: 0.85 }); // fade in blobs on touch start
+      if (fadeTimeout) clearTimeout(fadeTimeout);
+    };
+
+    let fadeTimeout;
+    const handleTouchEnd = () => {
+      fadeTimeout = setTimeout(() => {
+        api.start({ opacity: 0 }); // fade out blobs after 1 sec of no touch
+      }, 1000);
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('touchmove', handleTouchMove);
+    window.addEventListener('touchstart', handleTouchStart);
+    window.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchend', handleTouchEnd);
+      if (fadeTimeout) clearTimeout(fadeTimeout);
+    };
   }, [api]);
 
   const colors = [
@@ -47,11 +78,12 @@ export const BlobCursor = () => {
       </svg>
 
       <div className="blob-container">
-        {trail.map((springStyle, index) => (
+        {trail.map(({ xy, opacity }, index) => (
           <animated.div
             key={index}
             style={{
-              transform: springStyle.xy.to(trans),
+              transform: xy.to(trans),
+              opacity,
               borderRadius: '50%',
               background: colors[index % colors.length],
               filter: 'url(#gooey)',
@@ -64,7 +96,6 @@ export const BlobCursor = () => {
               zIndex: 9999 - index,
               boxShadow: '0 0 20px rgba(255,255,255,0.3)',
               mixBlendMode: 'screen',
-              opacity: 0.85,
             }}
           />
         ))}
@@ -72,4 +103,5 @@ export const BlobCursor = () => {
     </>
   );
 };
+
 export default BlobCursor;
