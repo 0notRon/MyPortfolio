@@ -52,7 +52,7 @@ export const BlobCursor = () => {
     };
   }, [api]);
 
-  const colors = [
+  const colors = [ 
     'radial-gradient(circle at center, #4E71FF, #5409DA)',
     'radial-gradient(circle at center, #00f260, #0575e6)',
     'radial-gradient(circle at center, #6FE6FC, #4ED7F1)',
