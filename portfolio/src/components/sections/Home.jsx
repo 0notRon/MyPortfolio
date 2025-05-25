@@ -13,7 +13,7 @@ export const Home = () => {
           </h1>
 
           <p className="tex-gray-400 text-lg mb-8 max-w-lg mx-auto">
-            A student, freelance artist, and tech enthusiast with a love for turning ideas into visuals and digital experiences.
+            A student, freelance artist, and a tech enthusiast with a love for turning ideas into visuals and digital experiences.
           </p>
           <div className="flex justify-center space-x-4">
             <a
