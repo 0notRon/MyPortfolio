@@ -9,7 +9,7 @@ const trans = (x, y) => `translate3d(${x}px,${y}px,0) translate3d(-50%, -50%, 0)
 
 export const BlobCursor = () => {
   const [trail, api] = useTrail(3, () => ({
-    xy: [-100, -100], // start offscreen
+    xy: [-100, -100], 
     opacity: 0,
     config: (i) => (i === 0 ? fast : slow),
   }));
@@ -44,7 +44,7 @@ export const BlobCursor = () => {
 
     const handleTouchEnd = () => {
       fadeTimeout = setTimeout(() => {
-        api.start({ opacity: 0, xy: [-100, -100] }); // fade out and move offscreen
+        api.start({ opacity: 0, xy: [-100, -100] }); 
       }, 1000);
     };
 

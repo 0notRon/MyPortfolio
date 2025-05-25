@@ -5,7 +5,6 @@ export const CursorTrail = () => {
     const trailLength = 15;
     const dots = [];
 
-    // Gradient colors to cycle through
     const gradients = [
       "radial-gradient(circle at center, #ff6a00 0%, transparent 80%)",
       "radial-gradient(circle at center, #ee0979 0%, transparent 80%)",
@@ -17,14 +16,14 @@ export const CursorTrail = () => {
       const dot = document.createElement("div");
       dot.className = "trail-dot";
       dot.style.position = "fixed";
-      dot.style.width = `${10 + i * 2}px`;  // increase size progressively
+      dot.style.width = `${10 + i * 2}px`;  
       dot.style.height = `${10 + i * 2}px`;
       dot.style.borderRadius = "50%";
       dot.style.background = gradients[i % gradients.length];
       dot.style.pointerEvents = "none";
       dot.style.zIndex = 9999;
       dot.style.transform = "translate(-50%, -50%)";
-      dot.style.opacity = `${0.6 - i * 0.04}`;  // fade out along trail
+      dot.style.opacity = `${0.6 - i * 0.04}`; 
       dot.style.boxShadow = `0 0 ${5 + i}px ${gradients[i % gradients.length].split(' ')[0]}`;
       document.body.appendChild(dot);
       dots.push({ el: dot, x: 0, y: 0 });
