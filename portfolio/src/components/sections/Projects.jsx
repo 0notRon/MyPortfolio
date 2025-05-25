@@ -51,8 +51,9 @@ export const Projects = () => {
             >
               <h3 className="text-xl font-bold mb-2">Parelle</h3>
               <p className="text-gray-400 mb-4">
-                ML-powered data visualization platform with predictive analytics
-                and interactive reports.
+               A mash-up of your favorite mini-games like Tic Tac Toe and Match-a-Card,
+                wrapped in one sleek mobile app. Battle your besties 
+                in multiplayer, or go brain-to-bot in AI mode. 
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {["Kotlin", "XML", "Compose", "Firebase", "Google Cloud", "OAuth"].map((tech, key) => (
