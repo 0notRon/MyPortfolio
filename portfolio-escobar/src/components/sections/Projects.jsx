@@ -34,7 +34,7 @@ export const Projects = () => {
 
               <div className="flex justify-between items-center">
                 <a
-                  href="https://github.com/0notRon/Match/releases/tag/v1.0.0"
+                  href="https://drive.google.com/drive/folders/1T9Zmoblxgk-T20_wb1lRU7mt1aSsKNNx?usp=sharing"
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4"
                 >
                   View Project →
@@ -72,7 +72,7 @@ export const Projects = () => {
               </div>
               <div className="flex justify-between items-center">
                 <a
-                  href="#"
+                  href="https://drive.google.com/drive/folders/1Q0uCxpDKJg3ZQhoOQRAYAF6k-6L1F_8r?usp=sharing"
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4"
                 >
                   View Project →
@@ -150,7 +150,7 @@ export const Projects = () => {
               </div>
               <div className="flex justify-between items-center ">
                 <a
-                  href="https://github.com/0notRon/IntiMates/releases/tag/v1.0.0"
+                  href="https://drive.google.com/drive/folders/1tdLFXj4Uv2_lesIOtyISsNeRv2Q3bK7C?usp=sharing"
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4"
                 >
                   View Project →
