@@ -1,9 +1,6 @@
 {
-  "dependencies": {
-<<<<<<< HEAD
-    "react-icons": "^5.5.0"
-=======
+  "dependencies": { 
+    "react-icons": "^5.5.0",
     "@react-spring/web": "^10.0.1"
->>>>>>> 040d1cd404dd3e6bd043c7ffb474ff09cbf3e33d
   }
 }
