@@ -18,6 +18,7 @@ import { RevealOnScroll } from "../RevealOnScroll";
 
         return () => clearInterval(interval);
       }, []);
+      
 
   return (
     <section

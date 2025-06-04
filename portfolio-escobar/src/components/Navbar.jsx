@@ -37,3 +37,4 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
     </nav>
   );
 };
+

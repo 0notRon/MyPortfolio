@@ -23,6 +23,7 @@ export const About = () => {
     "XML",
   ];
 
+  
   const backendSkills = [
     "Java",
     "C#",
