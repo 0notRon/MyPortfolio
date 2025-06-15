@@ -97,7 +97,7 @@ export const About = () => {
 
            <div className="mt-6 text-center">
             <a
-              href="https://raw.githubusercontent.com/0notRon/MyPortfolio/main/portfolio-escobar/public/Hezrone%20Escobar%20-%20Resume.pdf"
+            href="https://raw.githubusercontent.com/0notRon/MyPortfolio/main/portfolio-escobar/public/RESUME-Hezrone%20Escobar.pdf"
               download
               className="inline-flex items-center gap-2 bg-blue-500/10 text-blue-500 font-semibold py-2 px-4 rounded-full
                         transition-transform duration-200 ease-in-out hover:scale-105"
@@ -127,7 +127,7 @@ export const About = () => {
                 <li>
                   <strong>College</strong>
                   <div className="text-sm text-gray-400">
-                    STI College Pasay-EDSA (currently enrolled)
+                    STI College Pasay-EDSA
                   </div>
                 </li>
                 <li>
